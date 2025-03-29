@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/exalib/db" VERSION="20170116" COMMENT="XMLDB file for Moodle local/exalib"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="local_exalib_category" COMMENT="local_exalib_category">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="parent_id" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="name" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="online" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_exalib_item_category" COMMENT="local_exalib_item_category">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="item_id" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="category_id" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_exalib_item" COMMENT="local_exalib_item">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="resource_id" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="link" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="source" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="file" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="name" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="authors" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="year" TYPE="int" LENGTH="11" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="content" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="online_from" TYPE="int" LENGTH="11" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="online_to" TYPE="int" LENGTH="11" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="time_created" TYPE="int" LENGTH="11" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="time_modified" TYPE="int" LENGTH="11" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="modified_by" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="online" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="1" SEQUENCE="false"/>
+        <FIELD NAME="link_titel" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="created_by" TYPE="int" LENGTH="20" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="reviewer_id" TYPE="int" LENGTH="20" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="abstract" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
+        <FIELD NAME="allow_comments" TYPE="char" LENGTH="34" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="real_fiktiv" TYPE="char" LENGTH="20" NOTNULL="true" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+    <TABLE NAME="local_exalib_item_comments" COMMENT="comments for the items">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="20" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="itemid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="text" TYPE="text" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="time_created" TYPE="int" LENGTH="11" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="time_modified" TYPE="int" LENGTH="11" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="rating" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="isprivate" TYPE="int" LENGTH="1" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="userid" TYPE="foreign" FIELDS="userid" REFTABLE="user" REFFIELDS="id"/>
+        <KEY NAME="itemid" TYPE="foreign" FIELDS="itemid" REFTABLE="local_exalib_item" REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
